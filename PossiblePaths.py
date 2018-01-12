@@ -12,10 +12,9 @@ class Solution:
             for j in range(n):
                 row = i % m
                 col = j % n
-                if col == 0:
-                    sol_array[row][col] = sol_array[row - 1][col]
-                else:
-                    sol_array[row][col] = sol_array[row - 1][col] + sol_array[row][col - 1]
+                sol_array[row][col] = sol_array[row - 1][col]
+                if col > 0:
+                    sol_array[row][col] += sol_array[row][col - 1]
 
         return sol_array[m-1][n-1]
 
