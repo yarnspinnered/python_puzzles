@@ -27,5 +27,5 @@ class Solution:
         return curr_pos >= (last_pos - 1)
 s = Solution()
 print(s.canJump([2,3,1,1,4]))
-
+# [5,9,3,2,1,0,2,3,3,1,0,0]
 print(s.canJump([3,2,1,0,4]))
