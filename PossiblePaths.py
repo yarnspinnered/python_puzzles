@@ -12,7 +12,8 @@ class Solution:
             for j in range(n):
                 row = i % m
                 col = j % n
-                sol_array[row][col] = sol_array[row - 1][col]
+                sol_array[row][col] = sol_array[row -
+                                                1][col]
                 if col > 0:
                     sol_array[row][col] += sol_array[row][col - 1]
 
