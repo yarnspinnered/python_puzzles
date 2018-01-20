@@ -12,9 +12,25 @@ class Solution:
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
+        unmarked = [x for x in range(numCourses)]
+        temp_marked = [False for x in range(numCourses)]
+        marked = [False for x in range(numCourses)]
 
-        unmarked = set([x for x in range(numCourses)])
+        def visit(u):
+            if marked[u]:
+                return True
+            if temp_marked[u]:
+                return False
+            temp_marked[u] = True
+            if u in adj_list:
+                for nbr in adj_list[u]:
+                    if not visit(nbr): return False
+            marked[u] = True
+            res.insert(0, u)
+            return True
+
         adj_list = {}
+        res = []
 
         for edge in prerequisites:
             id = edge[0]
@@ -26,9 +42,10 @@ class Solution:
 
         while unmarked:
             curr = unmarked.pop()
-            visit(curr)
+            if not visit(curr):
+                return False
+
 
         return True
 
 s = Solution()
-print(s.canFinish(2,[[0,1]]))
